@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/background_dark</item>
-        <item name="colorAccent">@color/accent_glow</item>
+    <style name="BaseAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/background_dark</item>
         <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:textColorSecondary">@color/text_primary</item>
+    </style>
+
+    <style name="AppTheme.Nature" parent="BaseAppTheme">
+        <item name="colorPrimary">@color/primary_nature</item>
+        <item name="colorPrimaryDark">@color/background_dark</item>
+        <item name="colorAccent">@color/accent_nature</item>
+        <item name="colorSecondary">@color/secondary_nature</item>
+    </style>
+
+    <style name="AppTheme.Ocean" parent="BaseAppTheme">
+        <item name="colorPrimary">@color/primary_ocean</item>
+        <item name="colorPrimaryDark">@color/background_dark</item>
+        <item name="colorAccent">@color/accent_ocean</item>
+        <item name="colorSecondary">@color/secondary_ocean</item>
+    </style>
+
+    <style name="AppTheme.Sunset" parent="BaseAppTheme">
+        <item name="colorPrimary">@color/primary_sunset</item>
+        <item name="colorPrimaryDark">@color/background_dark</item>
+        <item name="colorAccent">@color/accent_sunset</item>
+        <item name="colorSecondary">@color/secondary_sunset</item>
     </style>
 </resources>
