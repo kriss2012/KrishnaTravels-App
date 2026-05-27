@@ -27,9 +27,20 @@ class MainActivity : AppCompatActivity() {
 
     private val locationReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            val lat = intent?.getDoubleExtra("latitude", 0.0)
-            val lng = intent?.getDoubleExtra("longitude", 0.0)
-            locationText.text = "Lat: $lat\nLng: $lng"
+            val lat = intent?.getDoubleExtra("latitude", 0.0) ?: 0.0
+            val lng = intent?.getDoubleExtra("longitude", 0.0) ?: 0.0
+            
+            // Mocking route logic
+            val etaMinutes = (10..45).random()
+            val nextStop = "University Campus"
+            
+            locationText.text = """
+                Route: University Express
+                Next Stop: $nextStop
+                ETA: $etaMinutes mins
+                Coords: ${String.format("%.4f", lat)}, ${String.format("%.4f", lng)}
+            """.trimIndent()
+            
             trackingProgressBar.visibility = View.GONE
         }
     }
