@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#C7D86A</color>
-    <color name="secondary">#A8B58A</color>
+    <!-- Nature Theme (Default) -->
+    <color name="primary_nature">#C7D86A</color>
+    <color name="secondary_nature">#A8B58A</color>
+    <color name="accent_nature">#D7F56B</color>
+
+    <!-- Ocean Theme -->
+    <color name="primary_ocean">#6AE2D8</color>
+    <color name="secondary_ocean">#8AAAB5</color>
+    <color name="accent_ocean">#6BF5F5</color>
+
+    <!-- Sunset Theme -->
+    <color name="primary_sunset">#FF9A8B</color>
+    <color name="secondary_sunset">#FF6A88</color>
+    <color name="accent_sunset">#FFD571</color>
+
+    <!-- Base AMOLED Colors -->
     <color name="background_dark">#0B0B0B</color>
-    <color name="card_dark">#171717</color>
     <color name="text_primary">#F5F5F5</color>
-    <color name="accent_glow">#D7F56B</color>
-    <color name="background_light">#F3F1E7</color>
-    <color name="card_light">#FFFFFF</color>
-    <color name="text_dark">#1E1E1E</color>
+    
+    <!-- Glassmorphism -->
+    <color name="glass_card_bg">#20FFFFFF</color> <!-- Semi-transparent for glass -->
+    <color name="glass_card_stroke">#30FFFFFF</color> <!-- Subtle border -->
 </resources>
