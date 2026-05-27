@@ -46,7 +46,11 @@ class LocationService : Service() {
             .setSmallIcon(android.R.drawable.ic_menu_mylocation)
             .build()
         
-        startForeground(1, notification)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(1, notification, android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+        } else {
+            startForeground(1, notification)
+        }
         requestLocationUpdates()
         
         return START_STICKY
