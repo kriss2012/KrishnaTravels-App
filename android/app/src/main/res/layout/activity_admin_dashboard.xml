@@ -70,12 +70,14 @@
                         android:layout_marginTop="8dp"/>
                     <Button
                         android:id="@+id/btnViewMap"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
                         android:text="Open Map"
-                        android:backgroundTint="@color/primary"
+                        android:background="@drawable/bg_button_primary"
                         android:textColor="@color/background_dark"
-                        android:layout_marginTop="16dp"/>
+                        android:layout_marginTop="16dp"
+                        android:layout_marginHorizontal="24dp"
+                        app:backgroundTint="@null"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -147,17 +149,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Send Route Notification to Students"
-                android:backgroundTint="#2B2F24"
+                android:background="@drawable/bg_button_secondary"
                 android:textColor="@color/primary"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/btnAboutApp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="About App / Policies"
-                android:backgroundTint="@color/card_dark"
-                android:textColor="@color/secondary" />
+                android:background="@drawable/bg_input_rounded"
+                android:textColor="@color/text_primary"
+                app:backgroundTint="@null"/>
                 
         </LinearLayout>
     </ScrollView>
