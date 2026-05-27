@@ -3,6 +3,16 @@ apply plugin: 'com.android.application'
 android {
     namespace = "com.krishnatravels.tracker"
     compileSdk = rootProject.ext.compileSdkVersion
+
+    signingConfigs {
+        release {
+            storeFile file("krishnatravels.jks")
+            storePassword "KrishnaTravels"
+            keyAlias "my-key-alias"
+            keyPassword "KrishnaTravels"
+        }
+    }
+
     defaultConfig {
         applicationId "com.krishnatravels.tracker"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -20,6 +30,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
