@@ -8,7 +8,9 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var locationText: TextView
     private lateinit var startTrackingButton: Button
+    private lateinit var trackingProgressBar: ProgressBar
     private var isTracking = false
 
     private val locationReceiver = object : BroadcastReceiver() {
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             val lat = intent?.getDoubleExtra("latitude", 0.0)
             val lng = intent?.getDoubleExtra("longitude", 0.0)
             locationText.text = "Lat: $lat\nLng: $lng"
+            trackingProgressBar.visibility = View.GONE
         }
     }
 
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         locationText = findViewById(R.id.locationText)
         startTrackingButton = findViewById(R.id.startTrackingButton)
+        trackingProgressBar = findViewById(R.id.trackingProgressBar)
 
         startTrackingButton.setOnClickListener {
             if (!isTracking) {
@@ -101,6 +106,7 @@ class MainActivity : AppCompatActivity() {
         isTracking = true
         startTrackingButton.text = "Stop Tracking"
         locationText.text = "Waiting for location..."
+        trackingProgressBar.visibility = View.VISIBLE
     }
 
     private fun stopLocationService() {
@@ -109,5 +115,6 @@ class MainActivity : AppCompatActivity() {
         isTracking = false
         startTrackingButton.text = "Start Live Tracking"
         locationText.text = "Tracking stopped"
+        trackingProgressBar.visibility = View.GONE
     }
 }
