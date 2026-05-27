@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash_background">#FDECDD</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="primary">#C7D86A</color>
+    <color name="secondary">#A8B58A</color>
+    <color name="background_dark">#0B0B0B</color>
+    <color name="card_dark">#171717</color>
+    <color name="text_primary">#F5F5F5</color>
+    <color name="accent_glow">#D7F56B</color>
+    <color name="background_light">#F3F1E7</color>
+    <color name="card_light">#FFFFFF</color>
+    <color name="text_dark">#1E1E1E</color>
 </resources>
