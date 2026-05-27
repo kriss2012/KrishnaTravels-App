@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         locationText = findViewById(R.id.locationText)
         startTrackingButton = findViewById(R.id.startTrackingButton)
         trackingProgressBar = findViewById(R.id.trackingProgressBar)
+        val viewRouteButton = findViewById<Button>(R.id.viewRouteButton)
 
         startTrackingButton.setOnClickListener {
             if (!isTracking) {
@@ -59,6 +60,10 @@ class MainActivity : AppCompatActivity() {
             } else {
                 stopLocationService()
             }
+        }
+        
+        viewRouteButton.setOnClickListener {
+            startActivity(Intent(this, RouteMapActivity::class.java))
         }
     }
 
