@@ -62,10 +62,12 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        if (email.contains("admin")) {
+                        // Check if it's an admin or a regular staff/driver
+                        // Drivers are registered by admin, so they just need to sign in
+                        if (email.contains("admin") || email == "krishnatravels@admin.com") {
                             startActivity(Intent(this, AdminDashboardActivity::class.java))
                         } else {
-                            // Driver logged in - Go to tracking screen
+                            // Staff/Driver logged in - Go to tracking screen
                             startActivity(Intent(this, MainActivity::class.java))
                         }
                         finish()
