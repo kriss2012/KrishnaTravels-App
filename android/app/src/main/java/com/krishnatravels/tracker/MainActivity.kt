@@ -30,14 +30,15 @@ class MainActivity : AppCompatActivity() {
             val lat = intent?.getDoubleExtra("latitude", 0.0) ?: 0.0
             val lng = intent?.getDoubleExtra("longitude", 0.0) ?: 0.0
             
-            // Mocking route logic
-            val etaMinutes = (10..45).random()
-            val nextStop = "University Campus"
+            // Pachora-Jalgaon route logic
+            val etaMinutes = (5..60).random()
+            val nextStop = listOf("Jalgaon", "Mhasawad", "Maheji", "Pachora").random()
             
             locationText.text = """
-                Route: University Express
+                Route: Pachora ↔ Jalgaon
                 Next Stop: $nextStop
-                ETA: $etaMinutes mins
+                Estimated Time: $etaMinutes mins
+                Status: Live Tracking Active
                 Coords: ${String.format("%.4f", lat)}, ${String.format("%.4f", lng)}
             """.trimIndent()
             
@@ -55,6 +56,10 @@ class MainActivity : AppCompatActivity() {
         trackingProgressBar = findViewById(R.id.trackingProgressBar)
         val viewRouteButton = findViewById<Button>(R.id.viewRouteButton)
 
+        // Pachora-Jalgaon specific UI update
+        findViewById<TextView>(R.id.titleText).text = "Pachora ↔ Jalgaon"
+        locationText.text = "Initializing Route..."
+
         startTrackingButton.setOnClickListener {
             if (!isTracking) {
                 checkPermissionsAndStartService()
@@ -66,6 +71,9 @@ class MainActivity : AppCompatActivity() {
         viewRouteButton.setOnClickListener {
             startActivity(Intent(this, RouteMapActivity::class.java))
         }
+
+        // Request permissions immediately on open
+        checkPermissionsAndStartService()
     }
 
     override fun onResume() {
