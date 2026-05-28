@@ -10,12 +10,13 @@
         android:id="@+id/mapTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Live Route: University Express"
+        android:text="Live Route: Pachora ↔ Jalgaon"
         android:textColor="@color/primary"
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:padding="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp"
         android:background="@color/card_dark"
         app:layout_constraintTop_toTopOf="parent" />
 
