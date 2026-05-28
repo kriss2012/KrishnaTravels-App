@@ -16,11 +16,24 @@ class RouteMapActivity : AppCompatActivity() {
         val timelineContainer = findViewById<LinearLayout>(R.id.timelineContainer)
         
         val routeStops = listOf(
-            "Central Station" to true,
-            "Tech Park" to true,
-            "University Campus" to true,
-            "City Center" to false,
-            "North Terminus" to false
+            "Pachora" to true,
+            "Goradkheda" to true,
+            "Bildhi" to true,
+            "Khedgaon" to true,
+            "Hadsan" to false,
+            "Nandra" to false,
+            "Lasgaon" to false,
+            "Samner" to false,
+            "Pathri" to false,
+            "Vadli" to false,
+            "Wawadade" to false,
+            "Ramdevwadi" to false,
+            "Shirsoli" to false,
+            "Jain" to false,
+            "GH Raisoni" to false,
+            "D Mart" to false,
+            "Ichadevi" to false,
+            "Jalgaon" to false
         )
         
         routeStops.forEachIndexed { index, stop ->
