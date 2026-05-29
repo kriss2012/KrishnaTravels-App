@@ -136,3 +136,8 @@ export default function QRCodeGenerator({ travel, compact = false }) {
         </div>
     );
 }
+\n\n/**
+ * QRCodeGenerator Component
+ * Generates a scannable QR code for a specific travel route.
+ * Passengers can scan this to quickly access the live tracking map.
+ */
