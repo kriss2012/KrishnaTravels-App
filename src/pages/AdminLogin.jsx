@@ -145,3 +145,8 @@ export default function AdminLogin() {
         </div>
     );
 }
+\n\n/**
+ * AdminLogin Page
+ * Handles authentication for administrators.
+ * Verifies credentials against Firebase Auth before granting access to the admin panel.
+ */
