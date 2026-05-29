@@ -167,3 +167,8 @@ function TravelRow({ travel, formatTime }) {
         </div>
     );
 }
+\n\n/**
+ * Admin Dashboard Page
+ * The main landing view for admins after logging in.
+ * Displays high-level analytics, active travels, and quick actions.
+ */
