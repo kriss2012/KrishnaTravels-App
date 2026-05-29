@@ -22,6 +22,7 @@ class LocationService : Service() {
     private val CHANNEL_ID = "LocationServiceChannel"
     private val NOTIF_ID = 1
     private var driverName = ""
+    private var travelId = ""
     private var lastLat = 0.0
     private var lastLng = 0.0
     private var lastSpeed = 0.0
@@ -33,6 +34,19 @@ class LocationService : Service() {
             lastSpeed = location.speed.toDouble()
 
             Log.d("LocationService", "GPS Update: ${lastLat}, ${lastLng}")
+
+            // Sync with Firebase
+            if (travelId.isNotEmpty()) {
+                val db = com.google.firebase.database.FirebaseDatabase.getInstance()
+                val updates = mapOf(
+                    "isOnline" to true,
+                    "lastSeen" to System.currentTimeMillis(),
+                    "location/latitude" to lastLat,
+                    "location/longitude" to lastLng,
+                    "location/speed" to lastSpeed
+                )
+                db.getReference("travels/$travelId").updateChildren(updates)
+            }
 
             // Broadcast to UI
             val intent = Intent("LocationUpdate").apply {
@@ -62,6 +76,7 @@ class LocationService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         driverName = intent?.getStringExtra("driverName") ?: "Driver"
+        travelId = intent?.getStringExtra("travelId") ?: ""
 
         val notification = buildNotification("Starting GPS...")
 
@@ -122,6 +137,10 @@ class LocationService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         locationManager?.removeUpdates(locationListener)
+        if (travelId.isNotEmpty()) {
+            com.google.firebase.database.FirebaseDatabase.getInstance()
+                .getReference("travels/$travelId/isOnline").setValue(false)
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
