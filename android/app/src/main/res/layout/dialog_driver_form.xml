@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/card_dark"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Driver"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/driverName"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_rounded"
+        android:hint="Driver Name *"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/driverEmail"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_rounded"
+        android:hint="Email *"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/driverPassword"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_rounded"
+        android:hint="Password *"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:inputType="textPassword"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/driverPhone"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_rounded"
+        android:hint="Phone Number"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:inputType="phone"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/driverTravelId"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_rounded"
+        android:hint="Travel ID (e.g. bus_01) *"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:inputType="textNoSuggestions"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/driverRoute"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_rounded"
+        android:hint="Route (e.g. Pachora → Jalgaon)"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnCancelDriver"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Cancel"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/bg_input_rounded"
+            app:backgroundTint="@null"/>
+
+        <Button
+            android:id="@+id/btnSaveDriver"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Save Driver"
+            android:textColor="@color/background_dark"
+            android:background="@drawable/bg_button_primary"
+            android:textStyle="bold"
+            app:backgroundTint="@null"/>
+    </LinearLayout>
+
+</LinearLayout>
