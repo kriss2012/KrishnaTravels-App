@@ -100,3 +100,8 @@ export default function Sidebar({ user }) {
         </>
     );
 }
+\n\n/**
+ * Sidebar Component
+ * Provides navigation for the Admin dashboard.
+ * Includes links to the main dashboard, adding new travels, and managing existing ones.
+ */
