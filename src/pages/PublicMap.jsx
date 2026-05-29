@@ -1,3 +1,8 @@
+/**
+ * File: PublicMap.jsx
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
