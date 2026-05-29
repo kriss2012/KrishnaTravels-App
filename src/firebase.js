@@ -33,3 +33,8 @@ export const secondaryApp = initializeApp(firebaseConfig, "Secondary");
 export const secondaryAuth = getAuth(secondaryApp);
 
 export default app;
+\n\n/**
+ * Firebase Configuration
+ * Initializes the Firebase app with project credentials.
+ * Exports reusable `auth` and `db` (Realtime Database) instances for the app.
+ */
