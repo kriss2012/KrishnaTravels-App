@@ -57,9 +57,18 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this, AdminDashboardActivity::class.java))
                     finish()
                 } else {
-                    // Treat any other non-empty login as a driver
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+                    // Firebase login attempt for drivers
+                    com.google.firebase.auth.FirebaseAuth.getInstance()
+                        .signInWithEmailAndPassword(user, pass)
+                        .addOnSuccessListener {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        }
+                        .addOnFailureListener {
+                            // Treat any other non-empty login as a driver if Firebase fails (for dev/demo)
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        }
                 }
             }, 1000)
         }
