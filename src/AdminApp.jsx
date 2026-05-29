@@ -77,3 +77,8 @@ export default function AdminApp() {
         </div>
     );
 }
+\n\n/**
+ * AdminApp Module Root
+ * Acts as a layout and route protector for the entire Admin section.
+ * Enforces admin authentication state before rendering nested admin routes.
+ */
