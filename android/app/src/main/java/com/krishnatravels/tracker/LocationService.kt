@@ -14,50 +14,21 @@ import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 class LocationService : Service() {
 
     private var locationManager: LocationManager? = null
     private val CHANNEL_ID = "LocationServiceChannel"
-    private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
     
     private val locationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
             Log.d("LocationService", "Location updated: ${location.latitude}, ${location.longitude}")
             
-            // 1. Send local broadcast for UI
+            // Send local broadcast for UI
             val intent = Intent("LocationUpdate")
             intent.putExtra("latitude", location.latitude)
             intent.putExtra("longitude", location.longitude)
             LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
-
-            // 2. Update Firebase if driver is logged in
-            val user = auth.currentUser
-            if (user != null && !user.email.isNullOrEmpty() && !user.email!!.contains("admin")) {
-                val locationData = mapOf(
-                    "latitude" to location.latitude,
-                    "longitude" to location.longitude,
-                    "speed" to location.speed,
-                    "timestamp" to System.currentTimeMillis()
-                )
-                
-                // We need the travelId. For now, we'll try to find it under drivers/uid/travelId
-                database.getReference("drivers").child(user.uid).child("travelId").get()
-                    .addOnSuccessListener { snapshot ->
-                        val travelId = snapshot.value as? String
-                        if (travelId != null) {
-                            val updates = mapOf(
-                                "travels/$travelId/location" to locationData,
-                                "travels/$travelId/isOnline" to true,
-                                "travels/$travelId/lastSeen" to System.currentTimeMillis()
-                            )
-                            database.reference.updateChildren(updates)
-                        }
-                    }
-            }
         }
         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
         override fun onProviderEnabled(provider: String) {}
@@ -68,8 +39,6 @@ class LocationService : Service() {
         super.onCreate()
         createNotificationChannel()
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
