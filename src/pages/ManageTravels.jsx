@@ -316,3 +316,8 @@ export default function ManageTravels() {
         </div>
     );
 }
+\n\n/**
+ * ManageTravels Page
+ * Admin interface for overseeing all active and past routes.
+ * Allows admins to edit details, reassign drivers, or terminate trips.
+ */
