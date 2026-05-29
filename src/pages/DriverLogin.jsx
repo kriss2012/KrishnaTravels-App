@@ -92,3 +92,8 @@ export default function DriverLogin() {
         </div>
     );
 }
+\n\n/**
+ * DriverLogin Page
+ * Handles authentication for drivers.
+ * Ensures only authorized drivers can access the location streaming dashboard.
+ */
