@@ -1,3 +1,8 @@
+/**
+ * File: LandingPage.jsx
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
