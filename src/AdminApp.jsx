@@ -64,9 +64,13 @@ export default function AdminApp() {
             <Sidebar user={user} />
             <main className="admin-main-content">
                 <Routes>
+                    {/* Admin Dashboard: Overview of active travels and system stats */}
                     <Route path="/" element={<Dashboard />} />
+                    {/* Add Travel: Form to create and assign new trips to drivers */}
                     <Route path="/add-travel" element={<AddTravel />} />
+                    {/* Manage Travels: View, edit, or delete existing routes and drivers */}
                     <Route path="/manage" element={<ManageTravels />} />
+                    {/* Fallback route: Redirects any unknown admin routes back to the dashboard */}
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </main>
