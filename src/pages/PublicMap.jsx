@@ -373,3 +373,8 @@ export default function PublicMap() {
         </div>
     );
 }
+\n\n/**
+ * PublicMap Page
+ * The consumer-facing tracking interface.
+ * Subscribes to real-time Firebase location data to display the bus/vehicle on an interactive map.
+ */
