@@ -105,15 +105,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadDriverInfo() {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        FirebaseDatabase.getInstance().getReference("drivers/$uid").get()
-            .addOnSuccessListener { snap ->
-                driverName = snap.child("name").getValue(String::class.java) ?: "Driver"
-                travelId = snap.child("travelId").getValue(String::class.java) ?: ""
-                driverRoute = snap.child("route").getValue(String::class.java) ?: "Pachora ↔ Jalgaon"
-                driverNameText.text = driverName
-                routeText.text = "Route: $driverRoute"
-            }
+        val user = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            val uid = user.uid
+            com.google.firebase.database.FirebaseDatabase.getInstance().getReference("drivers/$uid").get()
+                .addOnSuccessListener { snap ->
+                    driverName = snap.child("name").getValue(String::class.java) ?: "Driver"
+                    travelId = snap.child("travelId").getValue(String::class.java) ?: ""
+                    driverRoute = snap.child("route").getValue(String::class.java) ?: "Pachora ↔ Jalgaon"
+                    driverNameText.text = driverName
+                    routeText.text = "Route: $driverRoute"
+                }
+        } else {
+            // Fallback for mock login when no Firebase user is present
+            driverName = "Guest Driver"
+            travelId = "bus_001" // Default for testing
+            driverRoute = "Pachora ↔ Jalgaon"
+            driverNameText.text = driverName
+            routeText.text = "Route: $driverRoute (Mock Mode)"
+        }
     }
 
     override fun onResume() {
