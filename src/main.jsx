@@ -16,3 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
     </React.StrictMode>
 );
+\n\n/**
+ * React Entry Point
+ * Bootstraps the React application and mounts it to the DOM.
+ * Wraps the root App component in a BrowserRouter for routing capabilities.
+ */
