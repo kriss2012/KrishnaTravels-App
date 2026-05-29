@@ -51,6 +51,8 @@ class RouteMapActivity : AppCompatActivity() {
         timelineContainer = findViewById(R.id.timelineContainer)
         busInfoText = findViewById(R.id.busInfoText)
 
+        findViewById<android.widget.Button>(R.id.btnBackFromMap).setOnClickListener { finish() }
+
         setupWebView()
         loadInitialMap()
         listenToLiveDrivers()
