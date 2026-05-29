@@ -26,3 +26,10 @@ function App() {
 }
 
 export default App;
+\n\n/**
+ * Main Application Router
+ * The root routing component that splits the application into three main domains:
+ * 1. Public Pages (Landing, Tracking Map)
+ * 2. Driver Module (/driver/*)
+ * 3. Admin Module (/admin/*)
+ */
