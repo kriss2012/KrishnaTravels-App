@@ -331,3 +331,8 @@ export default function DriverDashboard({ user }) {
         </div>
     );
 }
+\n\n/**
+ * DriverDashboard Page
+ * The primary operational interface for drivers.
+ * Responsible for fetching the assigned route and streaming live GPS coordinates to Firebase.
+ */
