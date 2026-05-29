@@ -51,7 +51,9 @@ export default function DriverApp() {
 
     return (
         <Routes>
+            {/* Driver Dashboard: Main interface for drivers to view assigned route and stream live location */}
             <Route path="/" element={<DriverDashboard user={user} />} />
+            {/* Fallback route: Redirects any unknown driver routes back to the driver module root */}
             <Route path="*" element={<Navigate to="/driver" />} />
         </Routes>
     );
