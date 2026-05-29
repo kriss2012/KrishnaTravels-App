@@ -222,3 +222,8 @@ export default function AddTravel() {
         </div>
     );
 }
+\n\n/**
+ * AddTravel Page
+ * Admin interface for creating a new travel instance.
+ * Allows admins to input route details, assign a driver, and initialize tracking.
+ */
