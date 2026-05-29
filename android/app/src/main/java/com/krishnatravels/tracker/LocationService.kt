@@ -15,17 +15,13 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ServerValue
 
 class LocationService : Service() {
 
     private var locationManager: LocationManager? = null
     private val CHANNEL_ID = "LocationServiceChannel"
     private val NOTIF_ID = 1
-    private var travelId = ""
     private var driverName = ""
-    private var db = FirebaseDatabase.getInstance()
     private var lastLat = 0.0
     private var lastLng = 0.0
     private var lastSpeed = 0.0
@@ -36,24 +32,7 @@ class LocationService : Service() {
             lastLng = location.longitude
             lastSpeed = location.speed.toDouble()
 
-            Log.d("LocationService", "GPS: ${lastLat}, ${lastLng} @ ${(lastSpeed * 3.6).toInt()} km/h")
-
-            // Push to Firebase
-            if (travelId.isNotEmpty()) {
-                val locationData = mapOf(
-                    "latitude" to lastLat,
-                    "longitude" to lastLng,
-                    "speed" to lastSpeed,
-                    "timestamp" to ServerValue.TIMESTAMP
-                )
-                db.getReference("travels/$travelId").updateChildren(
-                    mapOf(
-                        "isOnline" to true,
-                        "location" to locationData,
-                        "lastSeen" to ServerValue.TIMESTAMP
-                    )
-                )
-            }
+            Log.d("LocationService", "GPS Update: ${lastLat}, ${lastLng}")
 
             // Broadcast to UI
             val intent = Intent("LocationUpdate").apply {
@@ -79,11 +58,9 @@ class LocationService : Service() {
         super.onCreate()
         createNotificationChannel()
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        db = FirebaseDatabase.getInstance()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        travelId = intent?.getStringExtra("travelId") ?: ""
         driverName = intent?.getStringExtra("driverName") ?: "Driver"
 
         val notification = buildNotification("Starting GPS...")
@@ -94,30 +71,18 @@ class LocationService : Service() {
             startForeground(NOTIF_ID, notification)
         }
 
-        // Set onDisconnect handler so Firebase auto-marks offline if connection drops
-        if (travelId.isNotEmpty()) {
-            db.getReference("travels/$travelId").onDisconnect().updateChildren(
-                mapOf("isOnline" to false, "lastSeen" to ServerValue.TIMESTAMP)
-            )
-            db.getReference("travels/$travelId").updateChildren(
-                mapOf("isOnline" to true, "driverName" to driverName)
-            )
-        }
-
         requestLocationUpdates()
         return START_STICKY
     }
 
     private fun requestLocationUpdates() {
         try {
-            // Use GPS for primary high-accuracy updates every 5 seconds / 5 meters
             locationManager?.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
                 5000L,
                 5f,
                 locationListener
             )
-            // Network as fallback
             locationManager?.requestLocationUpdates(
                 LocationManager.NETWORK_PROVIDER,
                 5000L,
@@ -157,11 +122,6 @@ class LocationService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         locationManager?.removeUpdates(locationListener)
-        if (travelId.isNotEmpty()) {
-            db.getReference("travels/$travelId").updateChildren(
-                mapOf("isOnline" to false, "lastSeen" to ServerValue.TIMESTAMP)
-            )
-        }
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
