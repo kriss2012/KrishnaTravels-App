@@ -55,9 +55,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_input_rounded"
-                android:hint="Username (e.g. admin or student)"
+                android:hint="Email Address"
                 android:textColorHint="@color/text_secondary"
                 android:textColor="@color/text_primary"
+                android:inputType="textEmailAddress"
                 android:layout_marginBottom="16dp"
                 android:minHeight="56dp" />
 
