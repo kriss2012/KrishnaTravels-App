@@ -1,3 +1,8 @@
+/**
+ * File: ExampleUnitTest.java
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 package com.getcapacitor.myapp;
 
 import static org.junit.Assert.*;
