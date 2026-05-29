@@ -38,12 +38,14 @@ class LocationService : Service() {
             // Sync with Firebase
             if (travelId.isNotEmpty()) {
                 val db = com.google.firebase.database.FirebaseDatabase.getInstance()
+                val now = System.currentTimeMillis()
                 val updates = mapOf(
                     "isOnline" to true,
-                    "lastSeen" to System.currentTimeMillis(),
+                    "lastSeen" to now,
                     "location/latitude" to lastLat,
                     "location/longitude" to lastLng,
-                    "location/speed" to lastSpeed
+                    "location/speed" to lastSpeed,
+                    "location/timestamp" to now
                 )
                 db.getReference("travels/$travelId").updateChildren(updates)
             }
