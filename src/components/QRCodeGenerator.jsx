@@ -1,3 +1,8 @@
+/**
+ * File: QRCodeGenerator.jsx
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 import { useRef } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 
