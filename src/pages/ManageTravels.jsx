@@ -1,3 +1,8 @@
+/**
+ * File: ManageTravels.jsx
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 import { useState, useEffect } from 'react';
 import { ref, onValue, remove, update } from 'firebase/database';
 import { signInWithEmailAndPassword, updateEmail, updatePassword, signOut } from 'firebase/auth';
