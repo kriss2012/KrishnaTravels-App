@@ -213,3 +213,8 @@ export default function LandingPage() {
         </div>
     );
 }
+\n\n/**
+ * LandingPage Component
+ * The public entry point of the Krishna Travels application.
+ * Provides navigation to public tracking, or login portals for staff.
+ */
