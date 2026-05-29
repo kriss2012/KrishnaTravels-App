@@ -1,3 +1,8 @@
+/**
+ * File: AddTravel.jsx
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 import { useState } from 'react';
 import { ref, set, push } from 'firebase/database';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
