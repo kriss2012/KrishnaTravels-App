@@ -1,3 +1,8 @@
+/**
+ * File: AboutActivity.kt
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 package com.krishnatravels.tracker
 
 import android.os.Bundle
