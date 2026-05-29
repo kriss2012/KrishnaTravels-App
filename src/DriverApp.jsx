@@ -58,3 +58,8 @@ export default function DriverApp() {
         </Routes>
     );
 }
+\n\n/**
+ * DriverApp Module Root
+ * Acts as a layout and route protector for the Driver section.
+ * Verifies driver session state before rendering the live tracking dashboard.
+ */
