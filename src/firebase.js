@@ -1,3 +1,8 @@
+/**
+ * File: firebase.js
+ * Date: 2026-05-29
+ * #by Kiri Team
+ */
 // IMPORTANT: Replace these with your actual Firebase project config
 // Get from: https://console.firebase.google.com → Project Settings → Your Apps → Firebase SDK snippet
 
